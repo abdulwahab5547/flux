@@ -28,7 +28,7 @@ function Register() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('/api/signup', formData); 
+            const response = await axios.post('https://flux-backend-eight.vercel.app/api/signup', formData); 
             toast.success('Your account has been registered successfully! Please log in.');
             console.log('User created:', response.data);
             
