@@ -23,7 +23,7 @@ app.use(json());
 app.use(_json());
 
 app.use(cors({
-    origin: 'https://flux-frontend-alpha.vercel.app/'
+    origin: 'https://flux-frontend-alpha.vercel.app'
 }));
 
 app.use('/api', router);
