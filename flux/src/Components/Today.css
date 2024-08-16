@@ -1,0 +1,468 @@
+
+
+.subtask-input-div{
+    padding-left: 60px;
+    position: relative;
+}
+
+.subtask-input-div:hover .subtask-actions{
+    visibility: visible;
+    opacity: 1;
+}
+
+.subtask-actions{
+    position: absolute;
+    left: 3px;
+    top: 3px;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.subtask-heading{
+    font-size: 14px;
+}
+
+
+.task-details-div{
+    margin-left: 15px;
+}
+
+.task-description{
+    border: none;
+    border-radius: 5px;
+    
+    min-width: 350px;
+}
+
+.board-task-description{
+    border: none;
+    width: auto;
+}
+
+.page-heading{
+    padding-left: 60px;
+}
+.today-save-btn-div{
+    padding-left: 70px;
+}
+
+.task-input{
+    border: none;
+    display: block;
+    min-width: 500px;
+}
+
+.task-input{
+    border: none;
+    display: block;
+    min-width: 300px;
+}
+
+.subtask-input{
+    border: none;
+    display: block;
+    max-width: 350px;
+}
+
+.board-task-input{
+    border: none;
+    display: block;
+    width: auto;
+}
+
+.board-task-div.highlighted {
+    border: 2px solid #C3392D;
+    background-color: #f0f0f0; 
+    border-radius: 6px;
+}
+
+.subtask-input:focus, .task-input:focus, .task-description:focus, .board-task-input:focus, .board-task-description:focus{
+    outline: none;
+    box-shadow: none;
+}
+
+/* Subtask checkbox */
+
+.subtask-checkbox{
+    width: fit-content;
+    height: fit-content;
+    margin-top: 5px;
+    background-color: white;
+    border: 2px solid #3498DA;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    border-radius: 4px;
+}
+
+
+.subtask-checkbox:checked{
+    background-color: #3498DA;
+    border-color: v;
+}
+
+.subtask-checkbox:checked::after{
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 0;
+    width: 6px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+/* Task checkbox */
+.task-checkbox {
+    width: fit-content;
+    height: fit-content;
+    margin-top: 5px;
+    background-color: white;
+    border: 2px solid #C3392C;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    border-radius: 4px;
+}
+
+.task-checkbox:checked {
+    background-color: hsl(5, 63%, 47%);
+    border-color: #C3392C;
+}
+
+.task-checkbox:checked::after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 0;
+    width: 6px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.board-task-checkbox{
+    width: 20px;
+    height: 20px;
+}
+
+.backlog-icon{
+    color: #FFCC00;
+}
+.ongoing-icon{
+    color: #3498DB;
+}
+.completed-icon{
+    color: #27AE60;
+}
+
+/* Board */
+
+.board-task-view{
+    padding-left: 60px;
+}
+
+.board-task-div{
+    border-radius: 12px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+}
+
+.delete-btn{
+    height: 25px;
+    margin-top: 2px;
+}
+
+.subtask-delete-btn{
+    background-color: #3498DA;
+    border: none;
+    color: white;
+    padding: 4px 13px;
+    border-radius: 5px;
+}
+
+
+
+.board-delete-btn{
+    margin: 0;
+}
+
+.delete-btn i, .board-delete-btn i{
+    font-size: 10px;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    padding: 0 20px; /* Space around the entire item */
+    position: relative;
+}
+
+.task-actions {
+    display: none; /* Hide actions by default */
+    position: absolute; /* Position absolutely to the left */
+    left: 0; /* Align to the left of the task-item */
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Adjust for exact centering */
+    margin-right: 10px; /* Space between actions and input */
+    flex-shrink: 0; /* Prevent shrinking */
+}
+
+.board-heading-row div p{
+    padding-left: 10px;
+}
+
+.para-heading{
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.para-text{
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.para-text-heading{
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.para-text-heading-nav{
+    font-family: "Montserrat", sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.heading-and-toggle-div{
+    margin-right: 20px;
+}
+
+.task-content{
+    flex: 1;
+    padding: 0;
+    padding-left: 50px;
+}
+
+.task-content{
+    flex: 1;
+    padding: 0;
+    padding-left: 50px;
+}
+
+.task-input {
+    flex: 1; /* Take up remaining space */ /* Ensure text does not overlap with action buttons */
+    border-radius: 5px;
+}
+
+.input-text-div{
+    margin-left: 40px;
+    border-radius: 5px;
+    /* border: 1px solid white; */
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
+/* 
+.input-text-div:hover{
+    border: 1px solid #C3392C;
+} */
+
+.task-checkbox, .delete-btn {
+    margin-right: 5px; /* Space between checkbox and button */
+}
+
+.board-task-checkbox{
+    margin: 0;
+}
+
+/* Show actions only on hover */
+.task-item:hover .task-actions {
+    display: flex;
+}
+
+.task-description {
+    border: 1px solid gray;
+}
+
+.task-save-btn-div{
+    padding-left: 20px;
+}
+
+.board-delete-btn{
+    border: none;
+    background-color: inherit;
+}
+
+.board-delete-btn i{
+    font-size: 14px;
+}
+
+
+/* Task status stuff */
+
+.task-status-div{
+    cursor: pointer;
+}
+
+#backlog-color{
+    color: #FFCC00;
+}
+#ongoing-color{
+    color: #3498DB;
+}
+#completed-color{
+    color: #27AE60;
+}
+
+.board-task-div:hover{
+    cursor: pointer;
+}
+
+
+/* Toggle view */
+.toggle-view-div{
+    gap: 10px;
+}
+
+.toggle-view-div div i{
+    font-size: 16px;
+}
+
+.toggle-view-div div i:hover{
+    cursor: pointer;
+}
+
+/* Toggle view tooltip */
+
+.toggle-view-icon{
+    position: relative;
+}
+
+.toggle-view-tooltip{
+    position: absolute;
+    transform: translateX(-50%);
+    bottom: -26px; 
+    left: 50%;
+    background-color: #333;
+    color: #fff;
+    padding: 2px;
+    padding-left: 4px;
+    z-index: 1000;
+    padding-right: 4px;
+    border-radius: 3px;
+    font-size: 12px;
+    white-space: nowrap;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    pointer-events: none;
+}
+
+.toggle-view-icon:hover .toggle-view-tooltip{
+    visibility: visible;
+    opacity: 1;
+  }
+
+  /* Checkbox and trash tooltip */
+
+.task-checkbox-div, .task-trash{
+    position: relative;
+}
+
+.task-checkbox-tooltip, .task-trash-tooltip{
+    position: absolute;
+    transform: translateX(-50%);
+    bottom: -26px; 
+    left: 50%;
+    background-color: #333;
+    color: #fff;
+    padding: 2px;
+    padding-left: 4px;
+    z-index: 1000;
+    padding-right: 4px;
+    border-radius: 3px;
+    font-size: 12px;
+    white-space: nowrap;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    pointer-events: none;
+}
+
+.task-checkbox-div:hover .task-checkbox-tooltip, .task-trash:hover .task-trash-tooltip{
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Status part */
+
+.today-heading-div{
+    gap: 15px;
+}
+
+
+/* Timestamps info button */
+
+.timestamp-info-btn{
+    position: relative;
+}
+
+.timestamps-info{
+    position: absolute;
+    transform: translateX(-50%);
+    bottom: -50px;
+    background-color: #333;
+    color: #fff;
+    
+    
+    z-index: 1000;
+    border-radius: 3px;
+    font-size: 11px;
+    white-space: nowrap;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    pointer-events: none;
+}
+
+.timestamp-info-btn:hover .timestamps-info{
+    visibility: visible;
+    opacity: 1;
+}
+
+
+.date-display-p{
+    font-size: 12px;
+    font-weight: 600;
+    padding-top: 1px;
+}
+
+.calendar-red{
+    color: #C3392C;
+}
+
+.task-date-input{
+    border-radius: 5px;
+    border: 1px solid gray;
+    background-color: inherit;
+    color: inherit;
+}
+
+/* Time tracker */
+
+.tracker-icon-container:hover{
+    cursor: pointer;
+}
+
+.tracker-icon-container i{
+    color: #C3392C;
+    font-size: 14px;
+}

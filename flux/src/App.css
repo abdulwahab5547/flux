@@ -1,0 +1,461 @@
+/* Overall */
+
+.app{
+  height: 100vh;
+}
+
+.heading-font{
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 700;
+}
+
+.new-font{
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.profile-pic-div{
+  border: 2px solid #C3392C;
+  border-radius: 50%;
+}
+/* Home */
+
+*{
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* Sidebar */
+
+/* .left-sidebar{
+  width: 280px;
+  min-height: 100vh;
+  background-color: #FCFAF8;
+} */
+
+/* Ensure the sidebar is fixed and always visible on the left */
+.left-sidebar {
+  position: fixed; /* Fixes the sidebar to the left side of the viewport */
+  top: 0;
+  left: 0;
+  width: 250px; /* Set a width for the sidebar */
+  height: 100vh; /* Full viewport height */
+  background-color: #f8f9fa; /* Adjust to your sidebar color */
+  transition: transform 0.3s ease; /* Smooth transition for the sidebar visibility */
+  z-index: 1000; /* Ensure it stays on top of other content */
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+}
+
+/* Hide the sidebar */
+.left-sidebar.hidden {
+  transform: translateX(-100%); /* Move sidebar out of view */
+}
+
+/* Adjust the margin of the right part when the sidebar is visible */
+.right-part {
+  margin-left: 250px; /* Default margin when sidebar is visible */
+  transition: margin-left 0.3s ease; /* Smooth transition for the margin adjustment */
+}
+
+/* Adjust the margin when the sidebar is hidden */
+.right-part.sidebar-hidden {
+  margin-left: 0; /* Margin when sidebar is hidden */
+}
+
+
+
+.sidebar-inner{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+.show-sidebar{
+  position: absolute;
+  left: 20px;
+}
+
+.hide-sidebar, .show-sidebar, .toggle-view-icon{
+  background-color: transparent;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.hide-sidebar div svg, .show-sidebar div svg{
+  width: 30px;
+  height: 30px;
+}
+
+.hide-sidebar div, .show-sidebar div{
+  padding: 2px;
+}
+
+/* .hide-sidebar:hover, .show-sidebar:hover{
+  background-color: #f0f0f0;
+} */
+
+.hidden {
+  display: none;
+}
+
+.nav-page-select{
+  gap: 10px;
+  border-radius: 5px;
+  color: #333;
+}
+
+.no-style-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav-page-select:hover{
+  /* background-color: #d8d2cb; */
+  cursor: pointer;
+}
+
+/* Profile part on sidebar */
+
+.profile-div{
+  gap: 10px;
+}
+
+.profile-pic-div i{
+  border-radius: 25px;
+}
+
+/* Profile part overlay */
+
+.app {
+  position: relative;
+}
+
+/* Toggle button part on sidebar lightbulb*/
+
+.lightbulb-icon-div:hover, .logout-icon-div:hover, .profile-div:hover{
+  /* border-radius: 50px; */
+  cursor: pointer;
+}
+
+.logout-icon-div i, .lightbulb-icon-div i{
+  font-size: 20px;
+}
+
+/* Logout btn */
+
+.normal-btn{
+  border: none;
+  background-color: #C3392C;
+  color: white;
+  padding: 4px 13px;
+  border-radius: 5px;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.cancel-btn{
+  border: none;
+  padding: 4px 13px;
+  border-radius: 5px;
+}
+
+.logout-btn-div{
+  gap: 10px;
+}
+
+.right-part-max{
+  width: 95%;
+  margin: auto;
+} 
+
+
+
+
+
+
+/* Animation */
+
+
+.bg-animation{
+  height: 100vh;
+}
+
+.bg-animation{
+  --s: 25vmin;
+  --p: calc(var(--s) / 2);
+  --c1: pink;
+  --c2: dodgerblue;
+  --c3: white;
+  --bg: var(--c3);
+  --d: 10000ms;
+  --e: cubic-bezier(0.76, 0, 0.24, 1);
+  
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(45deg, var(--c1) 25%, transparent 25%),
+    linear-gradient(-45deg, var(--c1) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, var(--c2) 75%),
+    linear-gradient(-45deg, transparent 75%, var(--c2) 75%);
+  background-size: var(--s) var(--s);
+  background-position: 
+    calc(var(--p) *  1) calc(var(--p) *  0), 
+    calc(var(--p) * -1) calc(var(--p) *  1), 
+    calc(var(--p) *  1) calc(var(--p) * -1), 
+    calc(var(--p) * -1) calc(var(--p) *  0);
+  animation: 
+    color var(--d) var(--e) infinite,
+    position var(--d) var(--e) infinite;
+}
+
+@keyframes color {
+  0%, 25% {
+    --bg: var(--c3);
+  }
+  26%, 50% {
+    --bg: var(--c1);
+  }
+  51%, 75% {
+    --bg: var(--c3);
+  }
+  76%, 100% {
+    --bg: var(--c2);
+  }
+}
+
+@keyframes position {
+  0% {
+    background-position: 
+      calc(var(--p) *  1) calc(var(--p) *  0), 
+      calc(var(--p) * -1) calc(var(--p) *  1), 
+      calc(var(--p) *  1) calc(var(--p) * -1), 
+      calc(var(--p) * -1) calc(var(--p) *  0);
+  }
+  25% {
+    background-position: 
+      calc(var(--p) *  1) calc(var(--p) *  4), 
+      calc(var(--p) * -1) calc(var(--p) *  5), 
+      calc(var(--p) *  1) calc(var(--p) *  3), 
+      calc(var(--p) * -1) calc(var(--p) *  4);
+  }
+  50% {
+    background-position: 
+      calc(var(--p) *  3) calc(var(--p) * 8), 
+      calc(var(--p) * -3) calc(var(--p) * 9), 
+      calc(var(--p) *  2) calc(var(--p) * 7), 
+      calc(var(--p) * -2) calc(var(--p) * 8);
+  }
+  75% {
+    background-position: 
+      calc(var(--p) *  3) calc(var(--p) * 12), 
+      calc(var(--p) * -3) calc(var(--p) * 13), 
+      calc(var(--p) *  2) calc(var(--p) * 11), 
+      calc(var(--p) * -2) calc(var(--p) * 12);
+  }
+  100% {    
+    background-position: 
+      calc(var(--p) *  5) calc(var(--p) * 16), 
+      calc(var(--p) * -5) calc(var(--p) * 17), 
+      calc(var(--p) *  5) calc(var(--p) * 15), 
+      calc(var(--p) * -5) calc(var(--p) * 16);
+  }
+}
+
+@media (prefers-reduced-motion) {
+  .bg-animation {
+    animation: none;
+  }
+}
+
+
+/* Hover icon  */
+
+/* .hover-icon{
+  transition: background-color 0.3s ease;
+  border-radius: 5px;
+}
+.hover-icon:hover {
+  background-color: #FEEFE5;
+} */
+
+.hover-icon {
+  transition: background-color 0.3s ease;
+  border-radius: 5px;
+}
+
+.hover-icon:hover {
+  background-color: var(--icon-hover-hover);
+}
+
+/* nav new page hover logic */
+
+.hidden-on-hover{
+  display: none;
+}
+
+.nav-new-page-hover:hover + .hidden-on-hover {
+  display: flex;
+}
+
+.sidebar-title {
+  white-space: nowrap;
+  overflow: hidden;   
+  text-overflow: ellipsis;
+  max-width: 120px;
+}
+
+.tooltip-container{
+  position: relative;
+}
+
+.sidebar-title-tooltip {
+  position: absolute;
+  transform: translateX(-50%);
+  bottom: -25px; /* Adjust this value to position the tooltip */
+  left: 50%;
+  /* direction: rtl; */
+  background-color: #333;
+  color: #fff;
+  z-index: 1000;
+  padding: 2px;
+  padding-left: 4px;
+  padding-right: 4px;
+  border-radius: 3px;
+  font-size: 10px;
+  white-space: nowrap;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  pointer-events: none;
+}
+
+.tooltip-container:hover .sidebar-title-tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Profile div tooltip */
+
+.profile-div{
+  position: relative;
+}
+
+.profile-div-tooltip{
+  position: absolute;
+  transform: translateX(-50%);
+  bottom: -26px; 
+  left: 50%;
+  background-color: #333;
+  color: #fff;
+  padding: 2px;
+  padding-left: 4px;
+  padding-right: 4px;
+  border-radius: 3px;
+  font-size: 12px;
+  white-space: nowrap;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  pointer-events: none;
+}
+
+.profile-div:hover .profile-div-tooltip{
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Sidebar tooltip */
+.hide-sidebar, .show-sidebar{
+  position: relative;
+}
+
+.hide-sidebar-tooltip, .show-sidebar-tooltip{
+  position: absolute;
+  transform: translateX(-50%);
+  bottom: -26px; 
+  background-color: #333;
+  color: #fff;
+  padding: 2px;
+  padding-left: 4px;
+  padding-right: 4px;
+  border-radius: 3px;
+  font-size: 12px;
+  white-space: nowrap;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  pointer-events: none;
+}
+
+.hide-sidebar:hover .hide-sidebar-tooltip, .show-sidebar:hover .show-sidebar-tooltip{
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Today/upcoming tooltip */
+.nav-page-select{
+  position: relative;
+}
+
+.nav-page-select-tooltip{
+  position: absolute;
+  transform: translateX(-50%);
+  bottom: -26px; 
+  left: 50%;
+  background-color: #333;
+  color: #fff;
+  padding: 2px;
+  
+  padding-left: 4px;
+  z-index: 1000;
+  padding-right: 4px;
+  border-radius: 3px;
+  font-size: 12px;
+  white-space: nowrap;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  pointer-events: none;
+}
+
+.nav-page-select:hover .nav-page-select-tooltip{
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Theme and logout tooltip */
+
+.lightbulb-icon-div, .logout-icon-div{
+  position: relative;
+}
+
+.lightbulb-icon-tooltip, .logout-icon-tooltip{
+  position: absolute;
+  transform: translateX(-50%);
+  top: -26px; 
+  background-color: #333;
+  color: #fff;
+  padding: 2px;
+  padding-left: 4px;
+  z-index: 1000;
+  padding-right: 4px;
+  border-radius: 3px;
+  font-size: 12px;
+  white-space: nowrap;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  pointer-events: none;
+}
+
+.logout-icon-tooltip{
+  left: 50%;
+}
+
+.lightbulb-icon-div:hover .lightbulb-icon-tooltip, .logout-icon-div:hover .logout-icon-tooltip{
+  visibility: visible;
+  opacity: 1;
+}
+
+
+.active{
+  background-color: pink;
+}

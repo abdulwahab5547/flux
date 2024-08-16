@@ -1,0 +1,11 @@
+/* Default light mode */
+:root {
+    --icon-hover: #FEEFE5;
+    --icon-hover-hover: #E5B5A2; /* Define a lighter hover color if needed */
+}
+
+/* Dark mode */
+[data-theme='dark'] {
+    --icon-hover: #555555;
+    --icon-hover-hover: #333333; /* Define a darker hover color if needed */
+}

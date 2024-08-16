@@ -1,0 +1,194 @@
+.card-item{
+    border: 1px solid #ddd9d9;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 10px -3px, rgba(0, 0, 0, 0.05) 0px 2px 2px -2px;
+}
+
+.card-circle-div{
+    background-color: #C3392D;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+}
+
+.item-one-outer, .item-two-outer, .item-four-outer, .item-five-outer, .item-five-inner, .item-three-outer{
+    border-radius: 8px;
+}
+
+.bg-dotted-light {
+    --dot-bg: white;
+    --dot-color: black;
+    --dot-size: 1px;
+    --dot-space: 12px;
+    background:
+      linear-gradient(90deg, var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+      linear-gradient(var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+      var(--dot-color);
+  }
+  
+  .bg-dotted-dark {
+    --dot-bg: #333333;
+    --dot-color: white;
+    --dot-size: 1px;
+    --dot-space: 12px;
+    background:
+      linear-gradient(90deg, var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+      linear-gradient(var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+      var(--dot-color);
+  }
+
+.carousel-container{
+    border-radius: 8px;
+}
+
+.card-task-div{
+    border-radius: 23px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 10px -3px, rgba(0, 0, 0, 0.05) 0px 2px 2px -2px;
+    transition: 1s;
+}
+
+.item-two-inner .card-task-div .card-circle-div{
+    background-color: #3498DB;
+}
+
+.card-page-div{
+    border-radius: 12px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 10px -3px, rgba(0, 0, 0, 0.05) 0px 2px 2px -2px;
+}
+
+
+
+.card-page-icon i{
+    color: #C3392D;
+    font-size: 35px;
+    transition: font-size 0.5s; 
+}
+
+.card-items-second-row{
+    gap: 16px;
+}
+
+/* .card-item-two{
+    position: relative;
+}
+
+.item-two-outer{
+    position: absolute;
+    width:max-content;
+    bottom: 0;
+} */
+
+.item-five-inner{
+    background: #333333;
+    border: none;
+}
+
+.upcoming-card-date, .upcoming-card-text{
+    margin: 0;
+}
+
+.upcoming-card-date{
+    color: #C3392D;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.item-two-outer:hover, .item-one-outer:hover{
+    cursor: pointer;
+}
+
+.card-page-div.page-1{
+    rotate: 23deg; /* or -23deg for page-three */
+    width: 120px;
+    height: 120px;
+    transition: transform 0.5s, width 0.5s, height 0.5s, rotate 0.5s; 
+}
+
+.card-page-div.page-2{
+    min-width: 130px;
+    min-height: 150px;
+    transition: transform 0.5s, width 0.5s, height 0.5s;
+}
+
+.card-page-div.page-3{
+    rotate: -23deg; /* or -23deg for page-three */
+    width: 120px;
+    height: 120px;
+    transition: transform 0.5s, width 0.5s, height 0.5s, rotate 0.5s; 
+}
+
+.card-item-four:hover .card-page-div.page-3,
+.card-item-four:hover .card-page-div.page-1 {
+    rotate: 0deg; /* Reset rotation */
+    width: 160px;  /* Use width instead of min-width for smooth transition */
+    height: 160px; /* Use height instead of min-height for smooth transition */
+}
+
+.card-item-four:hover .card-page-div.page-2{
+    min-width: 160px;
+    min-height: 160px;
+}
+
+.card-item-four:hover .card-page-icon i{
+    font-size: 38px;
+}
+
+.item-four-inner{
+    gap: 10px;
+}
+
+.card-page-div.page-2{
+    z-index: 1;
+    transition: 1s;
+}
+
+.card-circle-div{
+    margin-left: 25px;
+    transition: 0.5s;
+}
+
+.card-item-two:hover .card-circle-div, .card-item-one:hover .card-circle-div{
+    margin-left: 5px;
+}
+
+.no-underline-link {
+    text-decoration: none;
+}
+
+.card-page-content-div{
+    position: relative;
+}
+
+.page-tooltip-inner{
+    border-radius: 8px;
+    height: fit-content;
+    height: 100%;
+    width: 100%;
+}
+
+.page-tooltip-inner p{
+    white-space: pre-wrap;
+}
+
+.page-content-tooltip{
+    height: 200px;
+    width: 300px;
+    border: 1px solid #ddd9d9;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 10px -3px, rgba(0, 0, 0, 0.05) 0px 2px 2px -2px;
+    position: absolute;
+    left: 55px; 
+    bottom: 135px;
+    transform: translateX(-50%); 
+    z-index: 1005;
+    font-size: 14px;
+    white-space: nowrap;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    opacity: 0;
+    visibility: visible;
+}
+
+.card-page-content-div:hover .page-content-tooltip{
+    visibility: visible;
+    opacity: 1;
+}

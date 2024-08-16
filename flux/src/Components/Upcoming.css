@@ -1,0 +1,46 @@
+.card-page{
+    padding-right: 40px;
+}
+
+.upcoming-task-date{
+    font-size: 14px;
+    color: #C3392C;
+}
+
+.upcoming-task-title{
+    font-size: 16px;
+}
+
+.date-selector select{
+    background-color: #C3392C;
+    color: white;
+    padding: 3px;
+    border-radius: 5px;
+    border: none;
+    margin-right: 5px;
+}
+
+.upcoming-task-container{
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 10px -3px, rgba(0, 0, 0, 0.05) 0px 2px 2px -2px;
+}
+
+.upcoming-task-container:hover{
+    cursor: pointer;
+}
+
+.subtask-item {
+    list-style-type: none; /* Remove the default list style */
+    position: relative;
+    padding-left: 20px; /* Add padding to make space for the icon */
+}
+
+.subtask-item:before {
+    content: "\f061"; /* Font Awesome's "arrow-right" icon (unicode) */
+    font-family: "Font Awesome 5 Free"; /* Ensure you're using the correct Font Awesome version */
+    font-weight: 900; /* Make sure to use the solid style of the icon */
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 0.9em; /* Adjust the size of the icon */
+}

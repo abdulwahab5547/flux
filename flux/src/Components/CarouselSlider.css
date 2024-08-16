@@ -1,0 +1,23 @@
+/* CarouselStyles.css */
+
+/* Custom styles for carousel controls */
+.carousel-control-prev,
+.carousel-control-next {
+  color: #5224D2; /* Change arrow color */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: #C3392D; /* Change background color of the arrow */
+  border-radius: 50%; /* Make background circular */
+}
+
+.carousel-control-prev-icon::before,
+.carousel-control-next-icon::before {
+  font-size: 13px; /* Adjust arrow size */
+}
+
+
+.overlay-car-img{
+    max-width: 800px;
+}

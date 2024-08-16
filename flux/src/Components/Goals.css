@@ -1,0 +1,46 @@
+.goal-content {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+}
+
+.goal-content input, .goal-content textarea {
+    margin: 5px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.goal-item{
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 10px -3px, rgba(0, 0, 0, 0.05) 0px 2px 2px -2px;
+}
+
+.goal-input-div input{
+    border: none;
+    min-width: 200px;
+}
+
+.goal-input-div input:focus{
+    outline: none;
+}
+
+.goal-textarea-container textarea{
+    border-radius: 10px;
+}
+
+.goal-description-textarea{
+    min-width: 320px;
+}
+
+.goal-description-textarea:focus{
+    outline: none;
+}
+
+.goal-input.completed{
+    text-decoration: line-through;
+}
+
+.goal-del-btn{
+    cursor: pointer;
+}

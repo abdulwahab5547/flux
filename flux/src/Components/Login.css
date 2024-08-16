@@ -1,0 +1,40 @@
+.register-inner, .login-inner{
+    border: 3px solid #C3392C;
+    background-color: #FEC0CA;
+    border-radius: 10px;
+    min-height: 30vh;
+    min-width: 25vw;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1), 0 1px 2px -1px rgba(0,0,0,0.1);
+}
+
+.receipt-inputs div input{
+    background-color: white;
+    border-radius: 5px;
+}
+
+.first-and-last{
+    gap: 15px;
+}
+
+.login, .register, .bg-animation {
+    transition: opacity 3s ease;
+    opacity: 1;
+}
+
+.fade-out {
+    opacity: 0;
+}
+
+.form-control{
+    font-family: "Nunito Sans", sans-serif;
+}
+
+.profile-text{
+    font-family: "Nunito Sans", sans-serif;
+}
+
+.profile-pic-upload-input{
+    max-width: 200px;
+    font-size: 14px;
+    background-color: #C3392C;
+}
