@@ -17,6 +17,8 @@ import { uploadOnCloudinary } from './config/cloudinary.js';
 import userRoutes from './routes/userRoutes.js';
 app.use('/api', userRoutes);
 
+app.options('*', cors());
+
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', 'https://flux-frontend-alpha.vercel.app');
     res.header('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT');
