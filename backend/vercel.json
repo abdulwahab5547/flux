@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "index.js",  // Change to your main entry point if different
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/index.js"  // Ensure this matches your main entry point
+    }
+  ],
+  "cors": {
+    "origin": "https://flux-frontend-alpha.vercel.app",
+    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+    "credentials": true
+  }
+}
