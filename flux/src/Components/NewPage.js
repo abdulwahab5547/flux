@@ -26,7 +26,7 @@ function NewPage({ updatePage, colors }) {
             }
 
             try {
-                const response = await axios.get(`http://localhost:8000/api/pages/${slug}`, {
+                const response = await axios.get(`/api/pages/${slug}`, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
 
@@ -67,7 +67,7 @@ function NewPage({ updatePage, colors }) {
                     ...updatedField // Update content directly as text
                 };
 
-                const response = await axios.put(`http://localhost:8000/api/pages/${slug}`, updatedPage, {
+                const response = await axios.put(`/api/pages/${slug}`, updatedPage, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
 
@@ -132,7 +132,7 @@ function NewPage({ updatePage, colors }) {
                 formData.append('file', file);
     
                 // Post the file to the server
-                const response = await axios.post(`http://localhost:8000/api/pages/${slug}/upload-image`, formData, {
+                const response = await axios.post(`/api/pages/${slug}/upload-image`, formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data',
                         Authorization: `Bearer ${token}`
@@ -192,7 +192,7 @@ useEffect(() => {
                 return;
             }
 
-            const response = await axios.get(`http://localhost:8000/api/pages/${slug}/images`, {
+            const response = await axios.get(`/api/pages/${slug}/images`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }

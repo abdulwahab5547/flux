@@ -33,7 +33,7 @@ function Goals({colors, goals, setGoals, fetchGoals}) {
 
             console.log('Goals to be saved:', goalsToSave);
 
-            const response = await axios.post('http://localhost:8000/api/goals',
+            const response = await axios.post('/api/goals',
                 { goals: goalsToSave }, // Ensure the key is 'goals' if that's what your backend expects
                 {
                     headers: {

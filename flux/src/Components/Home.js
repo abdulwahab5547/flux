@@ -34,7 +34,7 @@ function Home({ changeTheme, colors, isDarkMode}) {
                 return;
             }
 
-            const response = await axios.get('http://localhost:8000/api/today', {
+            const response = await axios.get('/api/today', {
                 headers: {
                     Authorization: `Bearer ${token}` // Include token in Authorization header
                 }
@@ -101,7 +101,7 @@ function Home({ changeTheme, colors, isDarkMode}) {
                 return;
             }
 
-            const response = await axios.get('http://localhost:8000/api/goals', {
+            const response = await axios.get('/api/goals', {
                 headers: {
                     Authorization: `Bearer ${token}` // Include token in Authorization header
                 }
@@ -160,7 +160,7 @@ function Home({ changeTheme, colors, isDarkMode}) {
                 return;
             }
 
-            const response = await axios.get('http://localhost:8000/api/user', {
+            const response = await axios.get('/api/user', {
                 headers: {
                     Authorization: `Bearer ${token}` // Include token in Authorization header
                 }
@@ -250,7 +250,7 @@ function Home({ changeTheme, colors, isDarkMode}) {
             }
 
             // Send delete request to backend
-            await axios.delete(`http://localhost:8000/api/pages/${slug}`, {
+            await axios.delete(`/api/pages/${slug}`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -278,7 +278,7 @@ function Home({ changeTheme, colors, isDarkMode}) {
                     return;
                 }
 
-                const response = await axios.get('http://localhost:8000/api/pages', {
+                const response = await axios.get('/api/pages', {
                     headers: {
                         Authorization: `Bearer ${token}` // Include token in Authorization header
                     }
@@ -325,7 +325,7 @@ function Home({ changeTheme, colors, isDarkMode}) {
                 return;
             }
             // Send the new page data to the backend
-            const response = await axios.post('http://localhost:8000/api/new-page', newPage, {
+            const response = await axios.post('/api/new-page', newPage, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }

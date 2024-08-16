@@ -27,7 +27,7 @@ function Profile({colors, userData, setUserData, fetchUserData}){
                 return;
             }
     
-            await axios.put('http://localhost:8000/api/user', userData, {
+            await axios.put('/api/user', userData, {
                 headers: {
                     Authorization: `Bearer ${token}` // Include token in Authorization header
                 }
@@ -67,7 +67,7 @@ function Profile({colors, userData, setUserData, fetchUserData}){
             const formData = new FormData();
             formData.append('file', selectedFile);
     
-            await axios.post('http://localhost:8000/api/profile-upload', formData, {
+            await axios.post('/api/profile-upload', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     Authorization: `Bearer ${token}` 
