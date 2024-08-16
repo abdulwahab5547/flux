@@ -19,20 +19,13 @@ app.use('/api', userRoutes);
 
 app.options('*', cors());
 
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', 'https://flux-frontend-alpha.vercel.app');
-    res.header('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-    next();
-});
-
 
 const router = Router();
 app.use(json());
 app.use(_json());
 
 app.use(cors({
-    origin: 'https://flux-frontend-alpha.vercel.app',
+    origin: 'https://flux-frontend-alpha.vercel.app/register',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,  // If you need to send cookies or HTTP authentication
     optionsSuccessStatus: 204 // Some legacy browsers choke on 204
