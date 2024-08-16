@@ -23,7 +23,10 @@ app.use(json());
 app.use(_json());
 
 app.use(cors({
-    origin: 'https://flux-frontend-alpha.vercel.app'
+    origin: 'https://flux-frontend-alpha.vercel.app',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,  // If you need to send cookies or HTTP authentication
+    optionsSuccessStatus: 204 // Some legacy browsers choke on 204
 }));
 
 app.use('/api', router);
