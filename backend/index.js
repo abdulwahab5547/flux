@@ -764,6 +764,10 @@ app.get('/flux', (req, res) => {
     res.send('Hello flux flux flux!')
 })
 
+app.get('/', (req, res) => {
+    res.send('Hello there!')
+})
+
 
 app.listen(process.env.PORT, () => {
     console.log(`Example app listening on port ${process.env.PORT}`)
