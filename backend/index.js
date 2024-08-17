@@ -24,14 +24,12 @@ const router = Router();
 app.use(json());
 app.use(_json());
 
-app.use(cors());
-
-// app.use(cors({
-//     origin: 'https://flux-frontend-alpha.vercel.app/register',
-//     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-//     credentials: true, 
-//     optionsSuccessStatus: 204
-// }));
+// Middleware
+app.use(cors({
+  origin: ["https://flux-frontend-alpha.vercel.app"],
+  methods: ["POST", "GET"],
+  credentials: true
+}));
 
 app.use('/api', router);
 
