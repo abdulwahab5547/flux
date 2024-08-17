@@ -55,7 +55,7 @@ const upload = multer({ storage });
 
 // Upload API for Profile Image
 
-app.post('/api/profile-upload', authenticateToken, upload.single('file'), async (req, res) => {
+router.post('/api/profile-upload', authenticateToken, upload.single('file'), async (req, res) => {
     try {
         const localFilePath = req.file.path;
         const result = await uploadOnCloudinary(localFilePath);
@@ -142,7 +142,7 @@ function generateToken(user) {
 
 
 // Testing
-app.get('/api/create-user', async (req, res) => {
+router.get('/api/create-user', async (req, res) => {
     try {
       const newUser = new User({
         firstName: 'Hello',
@@ -204,7 +204,7 @@ app.get('/api/create-user', async (req, res) => {
 //     }
 // });
 
-app.post('/api/signup', async (req, res) => {
+router.post('/api/signup', async (req, res) => {
     try {
         const { firstName, lastName, email, password, organization } = req.body;
 
@@ -265,7 +265,7 @@ app.post('/api/signup', async (req, res) => {
 });
 
 // Login
-app.post('/api/login', async (req, res) => {
+router.post('/api/login', async (req, res) => {
     const { email, password } = req.body;
     try {
         const user = await findOne({ email });
@@ -292,7 +292,7 @@ app.post('/api/login', async (req, res) => {
 // Profile section - fetch and update user details
 
 // Fetch user details
-app.get('/api/user', authenticateToken, async (req, res) => {
+router.get('/api/user', authenticateToken, async (req, res) => {
     try {
         // Use the user ID from the token
         const user = await findById(req.user.id); // Ensure you use req.user.id or req.user._id depending on the token payload
@@ -306,7 +306,7 @@ app.get('/api/user', authenticateToken, async (req, res) => {
 });
 
 // Update user details
-app.put('/api/user', authenticateToken, async (req, res) => {
+router.put('/api/user', authenticateToken, async (req, res) => {
   try {
       const { firstName, lastName, email, password, organization } = req.body;
 
@@ -329,7 +329,7 @@ app.put('/api/user', authenticateToken, async (req, res) => {
 // Route to get and save today tasks
 
 // Get tasks
-app.get('/api/today', authenticateToken, async (req, res) => {
+router.get('/api/today', authenticateToken, async (req, res) => {
     try {
         const user = await User.findById(req.user.id);
 
@@ -345,7 +345,7 @@ app.get('/api/today', authenticateToken, async (req, res) => {
 
 
 // Save tasks
-app.post('/api/today', authenticateToken, async (req, res) => {
+router.post('/api/today', authenticateToken, async (req, res) => {
     try {
         const { tasks } = req.body;
 
@@ -383,7 +383,7 @@ app.post('/api/today', authenticateToken, async (req, res) => {
 
 // Start time tracking
 
-app.post('/api/today/:id/start-tracking', authenticateToken, async (req, res) => {
+router.post('/api/today/:id/start-tracking', authenticateToken, async (req, res) => {
     try {
         const taskId = req.params.id;
         const userId = req.user.id;
@@ -405,7 +405,7 @@ app.post('/api/today/:id/start-tracking', authenticateToken, async (req, res) =>
 });
 
 
-app.post('/api/today/:id/stop-tracking', authenticateToken, async (req, res) => {
+router.post('/api/today/:id/stop-tracking', authenticateToken, async (req, res) => {
     try {
         const taskId = req.params.id;
         const userId = req.user.id;
@@ -438,7 +438,7 @@ app.post('/api/today/:id/stop-tracking', authenticateToken, async (req, res) => 
 
 
 // Get goals
-app.get('/api/goals', authenticateToken, async (req, res) => {
+router.get('/api/goals', authenticateToken, async (req, res) => {
     try {
         const user = await User.findById(req.user.id);
 
@@ -454,7 +454,7 @@ app.get('/api/goals', authenticateToken, async (req, res) => {
 
 
 // Save goals
-app.post('/api/goals', authenticateToken, async (req, res) => {
+router.post('/api/goals', authenticateToken, async (req, res) => {
     try {
         const { goals } = req.body;
 
@@ -488,7 +488,7 @@ app.post('/api/goals', authenticateToken, async (req, res) => {
 
 // New page save
 
-app.post('/api/new-page', authenticateToken, async (req, res) => {
+router.post('/api/new-page', authenticateToken, async (req, res) => {
     const { slug, title, iconClass, content } = req.body;
 
     try {
@@ -515,7 +515,7 @@ app.post('/api/new-page', authenticateToken, async (req, res) => {
 
 // Fetching api
 
-app.get('/api/pages', authenticateToken, async (req, res) => {
+router.get('/api/pages', authenticateToken, async (req, res) => {
     try {
         const user = await User.findById(req.user.id);
 
@@ -531,7 +531,7 @@ app.get('/api/pages', authenticateToken, async (req, res) => {
 
 // Delete page
 
-app.delete('/api/pages/:slug', authenticateToken, async (req, res) => {
+router.delete('/api/pages/:slug', authenticateToken, async (req, res) => {
     try {
         const userId = req.user.id;
         const { slug } = req.params;
@@ -555,7 +555,7 @@ app.delete('/api/pages/:slug', authenticateToken, async (req, res) => {
 
 // Fetch data for new page based on slug
 
-app.get('/api/pages/:slug', authenticateToken, async (req, res) => {
+router.get('/api/pages/:slug', authenticateToken, async (req, res) => {
     try {
         const { slug } = req.params;
         const userId = req.user.id;
@@ -582,7 +582,7 @@ app.get('/api/pages/:slug', authenticateToken, async (req, res) => {
 
 // Backend API for updating new page content
 
-app.put('/api/pages/:slug', authenticateToken, async (req, res) => {
+router.put('/api/pages/:slug', authenticateToken, async (req, res) => {
     try {
         const { slug } = req.params;
         const { title, content} = req.body;
@@ -613,7 +613,7 @@ app.put('/api/pages/:slug', authenticateToken, async (req, res) => {
 
 // API for fetching images
 
-app.get('/api/pages/:slug/images', authenticateToken, async (req, res) => {
+router.get('/api/pages/:slug/images', authenticateToken, async (req, res) => {
     try {
         const { slug } = req.params;
         const userId = req.user.id;
@@ -645,7 +645,7 @@ app.get('/api/pages/:slug/images', authenticateToken, async (req, res) => {
 
 // API for saving page images
 
-app.post('/api/pages/:slug/upload-image', authenticateToken, upload.single('file'), async (req, res) => {
+router.post('/api/pages/:slug/upload-image', authenticateToken, upload.single('file'), async (req, res) => {
     try {
         const { slug } = req.params;
         const userId = req.user.id;
@@ -725,7 +725,7 @@ app.post('/api/pages/:slug/upload-image', authenticateToken, upload.single('file
 // });
 
 // Testing upcoming
-app.get('/api/content', authenticateToken, async (req, res) => {
+router.get('/api/content', authenticateToken, async (req, res) => {
     try {
         // Find the user and return the content
         const user = await User.findById(req.user.id);
@@ -739,7 +739,7 @@ app.get('/api/content', authenticateToken, async (req, res) => {
 });
 
 // Save content
-app.post('/api/content', authenticateToken, async (req, res) => {
+router.post('/api/content', authenticateToken, async (req, res) => {
     try {
         const { content } = req.body;
         
@@ -763,11 +763,11 @@ app.post('/api/content', authenticateToken, async (req, res) => {
     }
 });
   
-app.get('/flux', (req, res) => {
+router.get('/flux', (req, res) => {
     res.send('Hello flux flux flux!')
 })
 
-app.get('/', (req, res) => {
+router.get('/', (req, res) => {
     res.send('Hello there!')
 })
 
