@@ -204,7 +204,7 @@ router.get('/api/create-user', async (req, res) => {
 //     }
 // });
 
-router.post('/api/signup', async (req, res) => {
+app.post('/api/signup', async (req, res) => {
     try {
         const { firstName, lastName, email, password, organization } = req.body;
 
