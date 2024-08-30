@@ -1,39 +1,69 @@
-import express, { Router, json } from 'express';
+import express, { json } from 'express';
 import dotenv from 'dotenv';
-dotenv.config();
 import cors from 'cors';
 import multer from "multer";
-const app = express()
 import { unlinkSync, existsSync } from 'fs';
 import { connect } from 'mongoose';
 import User, { findOne, findById, findByIdAndUpdate } from './models/user.model.js';
 import pkg from 'body-parser';
 const { json: _json } = pkg;
 import token from 'jsonwebtoken';
-const { sign, verify } = token;
 import { uploadOnCloudinary } from './config/cloudinary.js';
-
-
 import userRoutes from './routes/userRoutes.js';
-app.use('/api', userRoutes);
 
-app.options('*', cors());
+dotenv.config();
+const app = express();
+const router = express.Router();  // Changed to express.Router()
 
+// Middleware
+app.use(cors({
+  origin: "https://flux-frontend-alpha.vercel.app",
+  methods: ["POST", "GET"],
+  credentials: true
+}));
 
-const router = Router();
+app.options('*', cors());  // Handle preflight requests for all routes
+
 app.use(json());
 app.use(_json());
 
-// Middleware
-// app.use(cors({
-//   origin: ["https://flux-frontend-alpha.vercel.app"],
-//   methods: ["POST", "GET"],
-//   credentials: true
-// }));
 
-app.use(cors());
+// import express, { Router, json } from 'express';
+// import dotenv from 'dotenv';
+// dotenv.config();
+// import cors from 'cors';
+// import multer from "multer";
+// const app = express()
+// import { unlinkSync, existsSync } from 'fs';
+// import { connect } from 'mongoose';
+// import User, { findOne, findById, findByIdAndUpdate } from './models/user.model.js';
+// import pkg from 'body-parser';
+// const { json: _json } = pkg;
+// import token from 'jsonwebtoken';
+// const { sign, verify } = token;
+// import { uploadOnCloudinary } from './config/cloudinary.js';
 
-app.use('/api', router);
+
+// import userRoutes from './routes/userRoutes.js';
+// app.use('/api', userRoutes);
+
+// app.options('*', cors());
+
+
+// const router = Router();
+// app.use(json());
+// app.use(_json());
+
+// // Middleware
+// // app.use(cors({
+// //   origin: ["https://flux-frontend-alpha.vercel.app"],
+// //   methods: ["POST", "GET"],
+// //   credentials: true
+// // }));
+
+// app.use(cors());
+
+// app.use('/api', router);
 
 
 // Multer
