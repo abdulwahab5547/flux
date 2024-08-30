@@ -25,11 +25,13 @@ app.use(json());
 app.use(_json());
 
 // Middleware
-app.use(cors({
-  origin: ["https://flux-frontend-alpha.vercel.app"],
-  methods: ["POST", "GET"],
-  credentials: true
-}));
+// app.use(cors({
+//   origin: ["https://flux-frontend-alpha.vercel.app"],
+//   methods: ["POST", "GET"],
+//   credentials: true
+// }));
+
+app.use(cors());
 
 app.use('/api', router);
 
