@@ -299,7 +299,7 @@ app.post('/api/signup', async (req, res) => {
 });
 
 // Login
-router.post('/api/login', async (req, res) => {
+app.post('/api/login', async (req, res) => {
     const { email, password } = req.body;
     try {
         const user = await findOne({ email });
