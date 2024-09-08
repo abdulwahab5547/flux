@@ -1,10 +1,10 @@
-import express, { json } from 'express';
+import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import multer from "multer";
 import { unlinkSync, existsSync } from 'fs';
 import { connect } from 'mongoose';
-import User, { findOne, findById, findByIdAndUpdate } from './models/user.model.js';
+import User from './models/user.model.js'; // Remove unused imports
 import pkg from 'body-parser';
 const { json: _json } = pkg;
 import token from 'jsonwebtoken';
@@ -12,76 +12,25 @@ import { uploadOnCloudinary } from './config/cloudinary.js';
 import userRoutes from './routes/userRoutes.js';
 
 dotenv.config();
-const app = express();
-const router = express.Router();  // Changed to express.Router()
+const app = express();  // Only use `app`, no need for `router`
 
 app.options('*', cors());  // Handle preflight requests for all routes
 
-app.use(json());
-app.use(_json());
+// Middleware
+app.use(express.json());  // Use express.json directly, no need for separate `json()` import
+app.use(_json());  // Body parser JSON middleware
 
+// CORS setup
 app.use(cors({
   origin: [
-    "https://flux-frontend-alpha.vercel.app", // Add allowed origins
+    "https://flux-frontend-alpha.vercel.app",  // Add allowed origins
     "http://localhost:3000"
   ],
   methods: [
-    "GET", "POST", "PUT", "DELETE", "PATCH" // Allow different methods
+    "GET", "POST", "PUT", "DELETE", "PATCH"  // Allow different methods
   ],
   credentials: true
 }));
-
-
-// import express, { Router, json } from 'express';
-// import dotenv from 'dotenv';
-// dotenv.config();
-// import cors from 'cors';
-// import multer from "multer";
-// const app = express()
-// import { unlinkSync, existsSync } from 'fs';
-// import { connect } from 'mongoose';
-// import User, { findOne, findById, findByIdAndUpdate } from './models/user.model.js';
-// import pkg from 'body-parser';
-// const { json: _json } = pkg;
-// import token from 'jsonwebtoken';
-// const { sign, verify } = token;
-// import { uploadOnCloudinary } from './config/cloudinary.js';
-
-
-// import userRoutes from './routes/userRoutes.js';
-// app.use('/api', userRoutes);
-
-// app.options('*', cors());
-
-
-// const router = Router();
-// app.use(json());
-// app.use(_json());
-
-// // Middleware
-// // app.use(cors({
-// //   origin: ["https://flux-frontend-alpha.vercel.app"],
-// //   methods: ["POST", "GET"],
-// //   credentials: true
-// // }));
-
-// app.use(cors());
-
-// app.use('/api', router);
-
-
-// Multer
-
-// const storage = multer.diskStorage({
-//     destination: (req, file, cb) => {
-//       cb(null, 'uploads/');
-//     },
-//     filename: (req, file, cb) => {
-//       cb(null, Date.now() + '-' + file.originalname);
-//     }
-//   });
-  
-// const upload = multer({ storage });
 
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
@@ -112,9 +61,6 @@ router.post('/api/profile-upload', authenticateToken, upload.single('file'), asy
         res.status(500).json({ error: error.message });
     }
 });
-
-
-
 
 // Connecting to database
 
@@ -153,28 +99,6 @@ function generateToken(user) {
     });
 }
 
-
-// Routes //
-
-// Test
-// app.post('/api/test', authenticateToken, async (req, res) => {
-//     try {
-//         const { test } = req.body;
-
-//         const user = await findById(req.user.id);
-//         if (!user) {
-//             return res.status(404).json({ message: 'User not found' });
-//         }
-//         user.test = test;
-//         await user.save();
-
-//         res.status(200).json({ message: 'Text saved successfully', user });
-//     } catch (error) {
-//         res.status(500).json({ message: error.message });
-//     }
-// });
-
-
 // Testing
 router.get('/api/create-user', async (req, res) => {
     try {
@@ -191,52 +115,6 @@ router.get('/api/create-user', async (req, res) => {
       res.status(400).json({ message: error.message });
     }
 });
-
-// Signup
-// app.post('/api/signup', async (req, res) => {
-//     try {
-//         const { firstName, lastName, email, password, organization} = req.body;
-//         const newUser = new User({ firstName, lastName, email, password, organization});
-//         await newUser.save();
-//         res.status(201).json(newUser);
-//     } catch (error) {
-//         res.status(400).json({ message: error.message });
-//     }
-// });
-
-// app.post('/api/signup', async (req, res) => {
-//     try {
-//         const { firstName, lastName, email, password, organization } = req.body;
-
-//         // Define default goal entry
-//         const defaultGoals = [
-//             {
-//                 text: 'Enter your goal',
-//                 description: '',
-//                 completed: false
-//             }
-//         ];
-
-//         // Create a new user with default goals
-//         const newUser = new User({
-//             firstName,
-//             lastName,
-//             email,
-//             password,
-//             organization,
-//             goals: defaultGoals // Assign default goals to the new user
-//         });
-
-//         // Save the new user to the database
-//         await newUser.save();
-
-//         // Respond with the newly created user
-//         res.status(201).json(newUser);
-//     } catch (error) {
-//         // Handle errors and respond with an error message
-//         res.status(400).json({ message: error.message });
-//     }
-// });
 
 app.post('/api/signup', async (req, res) => {
     try {
@@ -716,48 +594,6 @@ router.post('/api/pages/:slug/upload-image', authenticateToken, upload.single('f
     }
 });
 
-
-// app.post('/api/pages/:slug/upload-image', authenticateToken, upload.single('file'), async (req, res) => {
-//     try {
-//         const { slug } = req.params;
-//         const userId = req.user.id;
-
-//         const user = await User.findById(userId);
-//         if (!user) {
-//             return res.status(404).json({ message: 'User not found' });
-//         }
-
-//         const page = user.pages.find(page => page.slug === slug);
-//         if (!page) {
-//             return res.status(404).json({ message: 'Page not found' });
-//         }
-
-//         if (req.file) {
-//             // Upload the image to Cloudinary using the predefined function
-//             const localFilePath = req.file.path;
-//             const result = await uploadOnCloudinary(localFilePath);
-
-//             // Remove the local file after upload
-//             fs.unlinkSync(localFilePath);
-
-//             if (result) {
-//                 // Save the Cloudinary URL to the 'images' field
-//                 if (!page.images) page.images = [];
-//                 page.images.push(result.url);
-//                 await user.save();
-
-//                 res.status(200).json({ message: 'Image uploaded and saved successfully', imageUrl: page.images });
-//             } else {
-//                 res.status(500).json({ message: 'Failed to upload to Cloudinary' });
-//             }
-//         } else {
-//             res.status(400).json({ message: 'No image file uploaded' });
-//         }
-//     } catch (error) {
-//         res.status(500).json({ message: 'Server error', error: error.message });
-//     }
-// });
-
 // Testing upcoming
 router.get('/api/content', authenticateToken, async (req, res) => {
     try {
@@ -797,17 +633,15 @@ router.post('/api/content', authenticateToken, async (req, res) => {
     }
 });
   
-router.get('/flux', (req, res) => {
+app.get('/flux', (req, res) => {
     res.send('Hello flux flux flux!')
 })
 
-router.get('/', (req, res) => {
+app.get('/', (req, res) => {
     res.send('Hello there!')
 })
 
 
 app.listen(process.env.PORT, () => {
     console.log(`Example app listening on port ${process.env.PORT}`)
-})
-
-export default router;
+}}
