@@ -15,17 +15,21 @@ dotenv.config();
 const app = express();
 const router = express.Router();  // Changed to express.Router()
 
-// Middleware
-app.use(cors({
-  origin: "https://flux-frontend-alpha.vercel.app",
-  methods: ["POST", "GET"],
-  credentials: true
-}));
-
 app.options('*', cors());  // Handle preflight requests for all routes
 
 app.use(json());
 app.use(_json());
+
+app.use(cors({
+  origin: [
+    "https://flux-frontend-alpha.vercel.app", // Add allowed origins
+    "http://localhost:3000"
+  ],
+  methods: [
+    "GET", "POST", "PUT", "DELETE", "PATCH" // Allow different methods
+  ],
+  credentials: true
+}));
 
 
 // import express, { Router, json } from 'express';
